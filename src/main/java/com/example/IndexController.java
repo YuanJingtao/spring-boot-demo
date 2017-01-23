@@ -28,6 +28,7 @@ public class IndexController {
 
     @RequestMapping(value = "/session", method = RequestMethod.GET)
     public String getSessionId(HttpServletRequest request) {
+        System.out.print(request.getSession().getId());
         return request.getSession().getId();
     }
 

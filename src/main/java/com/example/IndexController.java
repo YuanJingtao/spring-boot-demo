@@ -1,5 +1,8 @@
 package com.example;
 
+import com.example.domain.dao.SeckillDao;
+import com.example.domain.dto.Seckill;
+import com.example.util.FastJsonTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * IndexController
@@ -26,6 +30,9 @@ public class IndexController {
     @Autowired
     @Qualifier("secondaryJdbcTemplate")
     private JdbcTemplate jdbcTemplate2;
+
+    @Autowired
+    private SeckillDao seckillDao;
 
     @RequestMapping("/")
     public String index() {
@@ -54,6 +61,15 @@ public class IndexController {
 
         int count = jdbcTemplate2.queryForObject("select count(1) from ai_admin_info", Integer.class);
         return count+"";
+    }
+
+    @RequestMapping(value = "/seckill", method = RequestMethod.GET)
+    public String getSeckill(HttpServletRequest request){
+//        List<Seckill> list = jdbcTemplate.queryForList("select * from seckill", Seckill.class);
+//        return FastJsonTool.serialize(list);
+
+        List<Seckill> list = seckillDao.queryAll(1,10);
+        return FastJsonTool.serialize(list);
     }
 
 }

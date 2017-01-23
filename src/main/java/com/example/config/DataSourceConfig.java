@@ -1,5 +1,6 @@
 package com.example.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -18,6 +19,7 @@ import javax.sql.DataSource;
  * @date 2017-01-23 16:48
  */
 @Configuration
+@MapperScan("com.example.domain.dao")
 public class DataSourceConfig {
     @Bean(name = "primaryDataSource")
     @Qualifier("primaryDataSource")

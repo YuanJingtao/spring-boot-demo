@@ -1,6 +1,5 @@
-package com.example.dto;
+package com.example.domain.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,6 +8,7 @@ import java.util.Date;
  * @author YuanJingtao
  * @version 1.0
  * @date 2017-01-23 15:34
+ * @since
  */
 public class Seckill{
 

@@ -1,4 +1,4 @@
-package com.example.container;
+package com.example.config;
 
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 

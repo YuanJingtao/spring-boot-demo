@@ -1,6 +1,6 @@
 package com.example;
 
-import com.alibaba.druid.pool.DruidDataSource;
+import com.example.config.DataSourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.Banner;
@@ -13,14 +13,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 
-import javax.sql.DataSource;
 import java.io.PrintStream;
 import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
+@Import(DataSourceConfig.class)
 public class DemoApplication {
 	
 	private static final String[] BANNER = { "", "  .   ____          _            __ _ _", " /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\", "( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\", " \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )", "  '  |____| .__|_| |_|_| |_\\__, | / / / /", " =========|_|==============|___/=/_/_/_/" };
@@ -34,25 +34,6 @@ public class DemoApplication {
 		return (ConfigurableEmbeddedServletContainer container) -> {
 			container.setSessionTimeout(5, TimeUnit.SECONDS);
 		};
-	}
-
-	@Bean
-	@Primary
-	public DataSource dataSource1() {
-		return buildDataSource("jdbc:mysql://localhost:3306/seckill");
-	}
-
-	@Bean(name = "secondaryDataSource")
-	public DataSource dataSource2() {
-		return buildDataSource("jdbc:mysql://localhost:3306/snms");
-	}
-
-	private DataSource buildDataSource(String url) {
-		DruidDataSource dataSource = new DruidDataSource();
-		dataSource.setUrl(url);
-		dataSource.setUsername("root");
-		dataSource.setPassword("123456");
-		return dataSource;
 	}
 
 	public static void main(String[] args) {

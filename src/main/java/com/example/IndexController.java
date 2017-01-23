@@ -1,6 +1,7 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +20,12 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 
     @Autowired
+    @Qualifier("primaryJdbcTemplate")
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    @Qualifier("secondaryJdbcTemplate")
+    private JdbcTemplate jdbcTemplate2;
 
     @RequestMapping("/")
     public String index() {
@@ -38,6 +44,15 @@ public class IndexController {
 //        return FastJsonTool.serialize(list);
 
         int count = jdbcTemplate.queryForObject("select count(1) from seckill", Integer.class);
+        return count+"";
+    }
+
+    @RequestMapping(value = "/jdbc2", method = RequestMethod.GET)
+    public String getJdbc2(HttpServletRequest request){
+//        List<Seckill> list = jdbcTemplate.queryForList("select * from seckill", Seckill.class);
+//        return FastJsonTool.serialize(list);
+
+        int count = jdbcTemplate2.queryForObject("select count(1) from ai_admin_info", Integer.class);
         return count+"";
     }
 

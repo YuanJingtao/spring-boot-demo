@@ -1,6 +1,5 @@
-package com.example;
+package com.example.config;
 
-import com.example.config.DataSourceConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.Banner;
@@ -13,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 
@@ -21,12 +21,11 @@ import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 @Import(DataSourceConfig.class)
-public class DemoApplication {
+@ComponentScan("com.example.controller")
+public class MainApplication {
 	
 	private static final String[] BANNER = { "", "  .   ____          _            __ _ _", " /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\", "( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\", " \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )", "  '  |____| .__|_| |_|_| |_\\__, | / / / /", " =========|_|==============|___/=/_/_/_/" };
-	private static final Logger logger = LoggerFactory.getLogger(DemoApplication.class);
-
-
+	private static final Logger logger = LoggerFactory.getLogger(MainApplication.class);
 
 	//对于Java 8来说可以用lambda表达式,而不需要创建该接口的一个实例.
 	@Bean
@@ -39,7 +38,7 @@ public class DemoApplication {
 	public static void main(String[] args) {
 //		SpringApplication.run(DemoApplication.class, args);
 		
-		SpringApplication bootstrap = new  SpringApplication(DemoApplication.class);
+		SpringApplication bootstrap = new  SpringApplication(MainApplication.class);
 		bootstrap.setBanner(new Banner() {
 			
 			@Override

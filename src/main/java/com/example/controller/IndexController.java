@@ -1,4 +1,4 @@
-package com.example;
+package com.example.controller;
 
 import com.example.domain.dao.SeckillDao;
 import com.example.domain.dto.Seckill;

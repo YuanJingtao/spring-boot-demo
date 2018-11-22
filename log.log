@@ -9,7 +9,7 @@
 2017-01-23 14:53:59.000  INFO 7612 --- [main] com.example.DemoApplication              : print banner
 2017-01-23 14:53:59.034 DEBUG 7612 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletConfigInitParams] PropertySource with lowest search precedence
 2017-01-23 14:53:59.034 DEBUG 7612 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [servletContextInitParams] PropertySource with lowest search precedence
-2017-01-23 14:53:59.034 DEBUG 7612 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemProperties] PropertySource with lowest search precedence
+2017-01-23 14:53:59.034 DEBUG 7612 --- [main] o.s.w.c.s.StandardServletEnv1111ironment     : Adding [systemProperties] PropertySource with lowest search precedence
 2017-01-23 14:53:59.034 DEBUG 7612 --- [main] o.s.w.c.s.StandardServletEnvironment     : Adding [systemEnvironment] PropertySource with lowest search precedence
 2017-01-23 14:53:59.035 DEBUG 7612 --- [main] o.s.w.c.s.StandardServletEnvironment     : Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
 2017-01-23 14:53:59.063  INFO 7612 --- [main] com.example.DemoApplication              : Starting DemoApplication on appledeMacBook-Pro.local with PID 7612 (/Users/apple/Documents/spring-boot-workspace/demo/target/classes started by yuanjingtao in /Users/apple/Documents/spring-boot-workspace/demo)
